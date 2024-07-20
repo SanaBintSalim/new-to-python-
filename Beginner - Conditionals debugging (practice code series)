@@ -1,29 +1,33 @@
-main_dish = input()
+main_dish = input().strip().lower()
 time_of_day = int(input())
-has_voucher = input() == "True"
-is_card_payment = input() == "True"
+has_voucher = input().strip().lower() == 'true'
+is_card_payment = input().strip().lower() == 'true'
 
+# Check main dish and set cost accordingly
 if main_dish == "paneer tikka":
     cost = 250
-elif main_dish == "butter chicken":
+elif main_dish == "butter chicken":  # Corrected the typo in "butter chicken"
     cost = 240
-elif main_dish == "masala dosa":
+elif main_dish == "masala dosa":  # Corrected the typo in "masala dosa"
     cost = 200
 else:
-    print("Invalid main dish")
-    exit()
+    print("Invalid main dish")  # Print error message for invalid dish
+    exit()  # Exit the code if main dish is invalid
 
-if time_of_day >= 12 and time_of_day <= 15:
-    discount = 0.15 * cost
-    total_cost = cost - discount
+# Check time of day and calculate total cost
+if time_of_day >= 12 and time_of_day <= 15:  # Corrected the comparison operators
+    total_cost = (1 - 0.15) * cost  # Apply 15% discount during lunch hours
 else:
-    total_cost = cost
+    total_cost = cost  # Otherwise, total cost remains the same
 
+# Apply voucher discount if has_voucher is True
 if has_voucher:
-    total_cost *= 0.9  # Apply voucher discount
+    total_cost *= 0.9  # Apply 10% voucher discount (equivalent to 90% of total cost)
 
-if is_card_payment:  # service charge for card payments
+# Apply service charge for card payments
+if is_card_payment:
     service_charge = 0.05 * total_cost
-    total_cost += service_charge
+    total_cost += service_charge  # Add service charge to total cost
 
-print(f"{total_cost:.02f}")
+# Print the total cost formatted to two decimal places
+print(f"{total_cost:.2f}")
