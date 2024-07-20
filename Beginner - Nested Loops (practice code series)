@@ -1,0 +1,55 @@
+task = input()
+
+def permutation(s):
+    n = len(s)
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                print(s[i] + s[j])
+
+def sorted_permutation(s):
+    n = len(s)
+    for i in range(n):
+        for j in range(n):
+            if i != j and s[i] < s[j]:
+                print(s[i] + s[j])
+
+def repeat_the_repeat(n):
+    for i in range(1, n + 1):
+        for j in range(1, n + 1):
+            print(j, end='')
+        print()
+
+def repeat_incrementally(n):
+    for i in range(1, n + 1):
+        for j in range(1, i + 1):
+            print(j, end='')
+        print()
+
+def increment_and_decrement(n):
+    for i in range(1, n + 1):
+        for j in range(1, i + 1):
+            print(j, end='')
+        for j in range(i - 1, 0, -1):
+            print(j, end='')
+        print()
+
+if task == "permutation":
+    s = input()
+    permutation(s)
+
+elif task == "sorted_permutation":
+    s = input()
+    sorted_permutation(s)
+
+elif task == "repeat_the_repeat":
+    n = int(input())
+    repeat_the_repeat(n)
+
+elif task == "repeat_incrementally":
+    n = int(input())
+    repeat_incrementally(n)
+
+elif task == "increment_and_decrement":
+    n = int(input())
+    increment_and_decrement(n)
